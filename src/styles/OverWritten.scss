@@ -1,0 +1,21 @@
+.card-header, .card-footer{
+    background: white !important;
+}
+  
+.card-header{
+    border-bottom: none !important;
+}
+.card-footer{
+    border-top: none !important;
+}
+
+.btn{
+    border-radius: 0 !important;
+    font-weight: 600 !important;
+    // text-transform: uppercase !important;
+}
+
+a{
+//   color: black !important;
+  text-decoration: none !important;
+}

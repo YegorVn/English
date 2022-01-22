@@ -1,0 +1,27 @@
+.navbar-wrapper{
+    background: #F5F5F5;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .navbar-link{
+    color: black;
+    text-decoration: none;
+    background: #F8E4FF;
+    letter-spacing: 0.2em;
+    box-shadow: 0px 0px 0px 2px;
+    transition: 0.1s;
+  }
+  
+  .navbar-link:hover{
+    box-shadow: 0px 0px 0px 5px;
+    color: black !important;
+  }
+  
+  .navbar-link:first-child{
+    background: #6967B8;
+  }
+  
+  .navbar-link:last-child{
+    background: #FF8E8E;
+  }

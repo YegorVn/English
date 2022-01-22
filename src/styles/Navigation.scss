@@ -1,0 +1,165 @@
+$duration: .5s;
+
+.navigation-block {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.navigation-block span {
+    position: absolute;
+    display: block;
+	  background: #000;
+	  transition: all $duration/4 linear;
+}
+
+.navigation-block .top,
+.navigation-block .bottom {
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+}
+.navigation-block .left,
+.navigation-block .right {
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+}
+
+.navigation-block .top {
+    top: 0;
+    left: 0;
+	  transition-delay: $duration*3/4;
+    transform-origin: top left;
+}
+.navigation-block .right {
+    top: 0;
+    right: 0;
+  	transition-delay: $duration/2;
+    transform-origin: top left;
+}
+.navigation-block .bottom {
+    bottom: 0;
+    right: 0;
+  	transition-delay: $duration/4;
+    transform-origin: top right;
+}
+.navigation-block .left {
+    top: 0;
+    left: 0;
+    transform-origin: bottom left;
+}
+
+.navigation-block:hover {
+  .top {
+    transition-delay: 0s;
+  }
+  .right {
+    transition-delay: $duration/4;
+  }
+  .bottom {
+    transition-delay: $duration/2;
+  }
+  .left {
+    transition-delay: $duration*3/4;
+  }
+  .top,
+  .bottom {
+  	transform: scaleX(1);
+  }
+  .left,
+  .right {
+    transform: scaleY(1);
+  }
+}
+  
+  .navigation{
+    // box-shadow: inset 0 0 10px black;
+    // border: 0.1em inset black;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .navigation-block-border{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .navigation-block-border:first-child{
+    // border-left: 1px solid rgb(207, 207, 207);
+  }
+
+  .navigation-block-border:last-child{
+    // border-right: 1px solid black;
+  }
+
+
+  .navigation-block{
+    height: 100% !important;
+  }
+
+  .navigation-link{
+    color: black;
+    text-decoration: none;
+    transition: color 0.5s;
+  }
+  
+  .navigation-link:hover{
+    color: rgb(97, 97, 97) !important;
+  }
+  
+  .ghost-wrapper{
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  .ghost-word{
+    transform:translateX(150%) translateY(-130%);
+    color: transparent;
+    position: absolute;
+  }
+  
+  @mixin nav-link-anim($anim-start, $direction, $i){
+    @keyframes animation {
+      0%{
+        color: transparent;
+      }
+      #{$anim-start}{
+        color: black;
+      }
+      100%{
+        color: transparent;
+        transform:translateX(250%) translateY(-130%);
+      }
+    }
+    @if $i == 1 {
+      animation-duration: 1s;
+      animation-delay: 0.2s;
+    }
+    @if $i == 2 {
+      animation-duration: 1s;
+      animation-delay: 0.5s;
+    }
+    @if $i == 3 {
+      animation-duration: 1s;
+      animation-delay: 1s;
+    }
+    animation-name: animation;
+    animation-iteration-count: infinite;
+  }
+  
+  
+  @for $i from 1 through 50 {
+    .ghost-wrapper .ghost-word:nth-child(#{$i}){
+      @if $i > 1 {
+        top: $i * 3px;
+      }
+      @else if $i > 10 {
+        top: #{$i - 10} * 3px;
+      }
+    }
+  
+    .navigation-link:hover ~ .ghost-wrapper .ghost-word:nth-child(#{$i}){
+      @include nav-link-anim(40%, 'asd', $i);
+    }
+  }

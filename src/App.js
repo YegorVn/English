@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {useRoutes} from './routes'
-import Navigation from './Navigation';
-import './App.css'
+import {Navbar} from './components';
+import './styles/App.scss'
+import './styles/Font.scss'
+import './styles/OverWritten.scss'
 
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
       <>
         <Router>
           <div>
-          <Navigation />
+          <Navbar />
           </div>
           {routes}
         </Router>

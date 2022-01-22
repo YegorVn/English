@@ -1,20 +1,20 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import Dictionary from './views/dictionary';
+import Grammar from './views/grammar';
 import Essays from './views/essays'
-import Spelling from './views/spelling';
+import Pronounce from './views/pronounce';
 
 export const useRoutes = () => {
     return (
         <Switch>
-          <Route path="/essays" exact>
+          <Route path="/Essays" exact>
             <Essays />
           </Route>
-          <Route path="/dictionary">
-            <Dictionary />
+          <Route path="/Grammar">
+            <Grammar />
           </Route>
-          <Route path="/spelling">
-            <Spelling />
+          <Route path="/Pronounce">
+            <Pronounce />
           </Route>
         </Switch>
     );

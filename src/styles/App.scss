@@ -1,0 +1,53 @@
+@use 'sass:math';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+html, body, #root{
+  // background: rgb(70, 70, 70);
+  height: 100%;
+  /* letter-spacing: 0.2em; */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+textarea{
+  overflow-y: hidden;
+}
+
+.new-essay-toogle{
+  background-color: rgb(191, 191, 255);
+  border-radius: 5px;
+}
+
+.statistics{
+  background-color: rgb(191, 191, 255);
+}
+
+.play-game-button{
+  letter-spacing: 0.4em !important;
+}
+
+.favourite-link{
+  background-size: 200%;
+  color: #000000!important;
+  transition: 1s;
+  transition: animation 5s ease-out; 
+}
+
+@keyframes fav-link-animation{
+  0%{
+    background-position-y: initial;
+  }
+  100%{
+    background-position-y: 1000px;
+  }
+}
+
+.favourite-link:hover{
+  animation-delay: 0.1s;
+  animation-name: fav-link-animation;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+}
