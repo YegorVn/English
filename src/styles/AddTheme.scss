@@ -1,0 +1,16 @@
+.add-theme__item::after{
+    content: "";
+    background-image: url("../images/plus.svg")!important;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    transition: 0.1s;
+}
+
+.add-theme__item:hover::after{
+    background-image: url("../images/plus-red.svg")!important;
+}

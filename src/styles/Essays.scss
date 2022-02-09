@@ -1,0 +1,27 @@
+.statistics{
+    background: transparent;
+    border-top: 3px solid rgb(196, 196, 196);
+    border-bottom: 3px solid rgb(202, 202, 202);
+    border-left: 2px solid rgb(112, 112, 112);
+    border-right: 2px solid rgb(112, 112, 112);
+    // background-color: rgb(191, 191, 255);
+  } 
+ 
+ .new-essay-toogle{
+    background: transparent;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-left: 2px solid rgb(112, 112, 112);
+    border-right: 2px solid rgb(112, 112, 112);
+    border-radius: 5px;
+  }
+
+.essay-card{
+    width: 45% !important;
+}
+
+@media (max-width: 768px) {
+    .essay-card{
+        width: 100% !important;
+    }
+}

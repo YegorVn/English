@@ -1,27 +1,118 @@
-.navbar-wrapper{
-    background: #F5F5F5;
-    text-transform: uppercase;
-    font-weight: bold;
+  ///Высота навбара
+  .navbar-container{
+  }
+
+  .navbar-container{
+    height: 120px;
+  }
+
+  @media (min-width: 1200px) {
+    .navbar-container{
+      height: 95px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .navbar-container{
+      height: unset;
+    }
+  }  
+  
+  ///Выравниваем высоту всех элементов
+  .navbar-wrapper, .navbar-links, .user-info, .user-info-content{
+    height: 100%;
+  }
+
+  ///Цвет для всего навбара
+  .navbar-links, .user-info-content, .user-info-dropdown-links{
+    background: #FEFEFE;
+    
+  }
+
+  .user-info-dropdown{
+    z-index: 1;
   }
   
-  .navbar-link{
+  ///Оформление ссылок
+  .navbar-links__link{
+    user-select: none;
     color: black;
     text-decoration: none;
-    background: #F8E4FF;
+    background-size: 50px 50px;
     letter-spacing: 0.2em;
-    box-shadow: 0px 0px 0px 2px;
-    transition: 0.1s;
+    border: 2px inset rgb(102, 102, 102);
+    transition: 0.2s;
+  }
+
+  .user-info-dropdown-links__link{
+    user-select: none;
+    color: black;
+    text-decoration: none;
+    // letter-spacing: 0.2em;
+    transition: 0.2s;
+    background-color: #fff;
+  }
+
+  .user-info-dropdown-links__link{
+    transition: 0.2s;
   }
   
-  .navbar-link:hover{
-    box-shadow: 0px 0px 0px 5px;
+  ///Оформление ссылок при наведении и фокусе
+  .navbar-links-focused, .navbar-links__link:hover{
+    box-shadow: 0px 0px 0px 2px;
     color: black !important;
   }
-  
-  .navbar-link:first-child{
-    background: #6967B8;
+
+  .user-info-dropdown-links__link{
+    color: black !important;
+  }
+
+  .user-info-dropdown-links-focused, .user-info-dropdown-links__link:hover{
+    border-right: 3px solid red !important;
+    border-left: 3px solid red !important;
+    background: rgb(255, 255, 255);
   }
   
-  .navbar-link:last-child{
-    background: #FF8E8E;
+  ///Бордер для всех элементов и специфическая стилизация бордера
+  .navbar-links, .user-info-content, .user-info-dropdown-links{
+    border-radius: 10px;
   }
+
+  .navbar-links, .user-info-content{
+    border: 1px solid rgb(199, 199, 199);
+  }
+
+ 
+
+  .user-info-dropdown-links__link{
+    border-right: 3px solid rgb(199, 199, 199);
+    border-left: 3px solid rgb(199, 199, 199);
+    border-top: 3px solid rgb(199, 199, 199);
+  }
+
+  .user-info-dropdown-links__link:first-child{
+    border-top: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .user-info-dropdown-links__link:last-child{
+    border-bottom: 3px solid rgb(199, 199, 199);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  ///Переопределение кнопки юзер инфо
+  .user-info{
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  ///Иконка Юзер инфо
+  .user-info-content__icon{
+    width: 80px;
+    height: 80%;
+    background-size: cover;
+  }
+

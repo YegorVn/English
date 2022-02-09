@@ -1,0 +1,22 @@
+.theme{
+    background-color: rgb(219, 36, 143);
+    border-radius: 15px;
+}
+
+.theme:hover{
+}
+
+.hidden-button{
+    user-select: none;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+    width: relative !important;
+    height: inherit;
+    padding: 0;
+    cursor:default !important;
+}
+
+.hidden-button-delete{
+    cursor: url("../images/cross.svg") 2 2, auto !important;
+}

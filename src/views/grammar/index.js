@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { Input, Label, Button, Row, Col } from "reactstrap";
-import { Textarea, CustomInput, Navigation } from "../../components";
+import { Navigation } from "../../components";
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
-import Words from './Words'
+import Vocabulary from './Vocabulary'
 import Spelling from "./Spelling";
+import Reading from "./Reading";
+import Rules from "./Rules";
+
 
 export default function Grammar(){
 
@@ -12,18 +13,24 @@ export default function Grammar(){
         <Navigation
           className="mx-auto mt-5"
           links={[
-            { text: "Punctuation", to: "/Grammar/Punctuation" },
-            { text: "Punctuation", to: "/Grammar/Punctuation" },
+            { text: "Rules", to: "/Grammar/Rules" },
+            { text: "Reading", to: "/Grammar/Reading" },
             { text: "spelling", to: "/Grammar/Spelling" },
-            { text: "Words", to: "/Grammar/Words" },
+            { text: "Vocabulary", to: "/Grammar/Vocabulary" },
           ]}
         />
         <Switch>
           <Route path="/Grammar/Spelling" exact>
             <Spelling />
           </Route>
+          <Route path="/Grammar/Reading">
+            <Reading />
+          </Route>
+          <Route path="/Grammar/Rules">
+            <Rules />
+          </Route>
           <Route path="/Grammar/Vocabulary">
-            <Words />
+            <Vocabulary />
           </Route>
           <Route path="/Games/:name?">
           </Route>

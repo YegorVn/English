@@ -3,10 +3,10 @@
 }
   
 .card-header{
-    border-bottom: none !important;
+    // border-bottom: none !important;
 }
 .card-footer{
-    border-top: none !important;
+    // border-top: none !important;
 }
 
 .btn{
@@ -15,7 +15,17 @@
     // text-transform: uppercase !important;
 }
 
+.arr-down-btn{
+    background: transparent;
+    border: none;
+}
+
 a{
 //   color: black !important;
   text-decoration: none !important;
+}
+
+//Dropdown
+.dropdown-toggle:after{
+    margin-left: 0.4em !important;
 }
