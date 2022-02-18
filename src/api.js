@@ -1,8 +1,10 @@
-const DEFAULT_URL = ""
+const DEFAULT_URL = 'http://127.0.0.1:8000'
+const queryString = require('query-string')
 
 class Api {
     get(path, params){
-        return this.request(path, {headers: this.headers})
+        path = params ? `${DEFAULT_URL}/${path}?${queryString.stringify(params, { arrayFormat: 'comma' })}` : `${DEFAULT_URL}/${path}`
+        return this.request(path, {headers: this.headers}, 'GET')
     }
 
     post(path, body){
@@ -27,16 +29,24 @@ class Api {
           method: method,
           headers: headers,
           body: body,
+          mode: 'no-cors'
         });
     }
 
     async handleResponse(request){
-        let response = await request
-
-        return response
+        try{
+            return await request
+        }
+        catch(e){
+            console.log(e)
+        }    
     }
 
-    headers(){}
+    headers() {
+        let _headers = { "Content-Type": "application/json", 'Access-Control-Allow-Origin': DEFAULT_URL}
+        // if (this.auth.token) _headers["Authorization"] = `Token ${this.auth.token}`
+        return _headers
+    }
 }
 
 export default new Api()

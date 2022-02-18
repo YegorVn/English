@@ -20,6 +20,27 @@
     width: 45% !important;
 }
 
+@keyframes essay-card__success-animation{
+    0%{
+        transform: rotate(30deg);
+    }
+    25%{
+        transform: rotate(-30deg);
+    }
+    75%{
+        transform: rotate(15deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+.essay-card__success{
+    animation-name: essay-card__success-animation;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
 @media (max-width: 768px) {
     .essay-card{
         width: 100% !important;

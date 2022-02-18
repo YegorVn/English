@@ -2,25 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Redux from 'react-redux'
-// import ReactRedux from 'react-redux'
-// import rootReducer from './redux/reducers';
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import rootReducer from './redux/rootReducer';
 
-// const {Provider, connect} = ReactRedux;
-// const createStore = Redux.createStore
 
-// const store = createStore(rootReducer);
-// const ConnectedApp = connect((state) => {
-//   console.log(state);
-//   return state;
-// })(App);
+const store = createStore(rootReducer);
   
-// export {store}
 
 ReactDOM.render(
-  // <Provider store={store}>
+  <Provider store={store}>
     <App />,
-  // </Provider>,
+  </Provider>,
   document.getElementById("root")
 );
 
+export default store

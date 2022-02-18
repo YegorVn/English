@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, } from "reactstrap";
 import {Form} from 'react-bootstrap'
 import { Textarea, Container, ThemesList, AddTheme } from "../../components";
@@ -7,6 +7,9 @@ import '../../styles/Essays.scss'
 import { Link } from "react-router-dom";
 import Edit from './edit'
 import Delete from "./delete";
+import EssaysAction from "../../redux/actions/EssaysAction";
+import { useSelector } from "react-redux";
+import success from '../../images/success.svg'
 
 export default function Essays() {
   const [editEssay, setEditEssay] = useState(false)
@@ -20,6 +23,7 @@ export default function Essays() {
     fontSize: "",
     fonColor: "",
     text: "",
+    translateIncluded: true
   }
   const [form, setForm] = useState(defaultForm);
 
@@ -43,8 +47,19 @@ export default function Essays() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if(form.text !== '') setEssays((essays) => [...essays, { title: form.title, text: form.text, themes: form.themes, val: "" }]);
+    if (form.text !== "")
+      setEssays((essays) => [
+        ...essays,
+        {
+          title: form.title,
+          text: form.text,
+          themes: form.themes,
+          val: "",
+          translateIncluded: form.translateIncluded,
+        },
+      ]);
     setForm(defaultForm);
+    setCreateEssay(false);
   };
 
   const handleAddTheme = (id) => {
@@ -58,6 +73,15 @@ export default function Essays() {
     setForm(form => ({themes: newThemes}))
   }
 
+  const kek = useSelector((state) => state.essays);
+
+  useEffect(() => {
+    EssaysAction.find({id: 1})
+    console.log(kek)
+    // EssaysAction.create({title: "", body: ""})
+  }, [])
+  const [kaka, setKaka] = useState(false)
+  const [koko, setKoko] = useState(false)
   return (
     <Container>
       <div className="new-essay-toogle p-2 ps-3 d-flex mt-4">
@@ -133,17 +157,43 @@ export default function Essays() {
             <React.Fragment key={el.title}>
               <Card className="essay-card mt-4 pt-2">
                 <Card.Header className="f-flex text-s">
-                  <Link className="" to={"/"}>
-                    Translate
-                  </Link>
-                  <Link className="ms-3" to={"/"}>
-                    Pronounce
-                  </Link>
+                  {!kaka ? (
+                    <Button className="text-xxs" onClick={() => setKaka(true)}>Translate</Button>
+                  ) : (
+                    <Link className="text-xxs" to={"/"}>
+                        <img
+                          className={kaka ? "me-2 essay-card__success" : ""}
+                          src={success}
+                          height={45}
+                          width={20}
+                          alt=""
+                        />
+                      Go to translation page
+                    </Link>
+                  )}
+                  {!koko ? (
+                    <Button className="text-xxs ms-2" onClick={() => setKoko(true)}>Translate</Button>
+                  ) : (
+                    <Link className="text-xxs ms-3" to={"/"}>
+                        <img
+                          className={"me-2 essay-card__success"}
+                          src={success}
+                          height={45}
+                          width={20}
+                          alt=""
+                        />
+                      Go to pronounce page
+                    </Link>
+                  )}
                 </Card.Header>
                 <Card.Body>
-                  <ThemesList themes={el.themes} className="d-flex flex-wrap justify-content-start align-items-center" elClassName="text-xxxs ms-1"/>
-                  <Card.Title className="text-s mt-2">{el.title}</Card.Title>
-                  <Card.Text className="text-s">{el.text}</Card.Text>
+                  <ThemesList
+                    themes={el.themes}
+                    className="d-flex flex-wrap justify-content-start align-items-center"
+                    elClassName="text-xxxs ms-1"
+                  />
+                  <Card.Title className="mt-2">{el.title}</Card.Title>
+                  <Card.Text className="">{el.text}</Card.Text>
                 </Card.Body>
                 <Card.Footer className="">
                   <Button

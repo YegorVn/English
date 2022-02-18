@@ -1,12 +1,18 @@
 import store from '../../index'
+import api from '../../api'
 
-export default class Essays{
-    static async find(){
-        let response
-        store.dispatch({
-            type: "ESSAYS_INDEX",
-            payload: await response.json()
-        })
+export default class EssaysAction{
+    static async find(params){
+        let response = await api.get('essay.json', params)
+        if (response.ok){
+            let data = await response.json()
+            store.dispatch({
+                type: "ESSAYS_INDEX",
+                payload: data
+            })
+            console.log(data)
+        }
+        else console.log('err')
     }
 
     static async create(data){
@@ -17,7 +23,7 @@ export default class Essays{
             formData.append(i, data[i])
         }
 
-        let response
+        let response = await api.post('posts', formData)
         store.dispatch({
             type: "ESSAYS_INDEX",
             payload: await response.json()
